@@ -1,7 +1,7 @@
 import { Container, Col, Row, Card, Button } from 'react-bootstrap';
 import { useParams, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import SpinnerCircle from '../components/Spinner';
+import SpinnerCircle from '../components/Spinner/Spinner';
 import { loadImage } from '../api';
 
 const CatPage = () => {

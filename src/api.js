@@ -9,7 +9,7 @@ export async function getBreeds() {
     let response = await axios.get('https://api.thecatapi.com/v1/breeds/');
     return response.data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 
@@ -26,7 +26,7 @@ export async function getImages(breedId, page) {
     });
     return response.data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 }
 

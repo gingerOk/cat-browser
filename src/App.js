@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SpinnerCircle from './components/Spinner';
+import Header from './components/Header/Header';
+import SpinnerCircle from './components/Spinner/Spinner';
 
 const Homepage = lazy(() => import('./pages/Homepage'));
 const CatPage = lazy(() => import('./pages/CatPage'));
@@ -8,6 +9,7 @@ const CatPage = lazy(() => import('./pages/CatPage'));
 export default function App() {
   return (
     <Suspense fallback={<SpinnerCircle />}>
+      <Header />
       <Switch>
         <Route exact path="/">
           <Homepage />
