@@ -1,8 +1,8 @@
-import { Container, Col, Row, Card, Button } from "react-bootstrap";
-import { useParams, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
-import SpinnerCircle from "../components/Spinner";
-import { loadImage } from "../api";
+import { Container, Col, Row, Card, Button } from 'react-bootstrap';
+import { useParams, useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import SpinnerCircle from '../components/Spinner';
+import { loadImage } from '../api';
 
 const CatPage = () => {
   const [breed, setBreed] = useState([]);
@@ -12,7 +12,7 @@ const CatPage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    loadImage(id).then((res) => {
+    loadImage(id).then(res => {
       setImage(res);
       setBreed(res.breeds[0]);
       setLoading(false);

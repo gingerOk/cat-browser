@@ -1,13 +1,13 @@
-import { Container, Button, Form } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
-import _findIndex from "lodash/findIndex";
-import _unionBy from "lodash/unionBy";
-import { getBreeds, getImages } from "../api";
-import { setUrlSearchParams, getByParamsSearch } from "../utils";
-import ImageList from "./components/ImageList";
-import AlertBanner from "../components/AlertBanner";
-import SpinnerCircle from "../components/Spinner";
+import { Container, Button, Form } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
+import _findIndex from 'lodash/findIndex';
+import _unionBy from 'lodash/unionBy';
+import { getBreeds, getImages } from '../api';
+import { setUrlSearchParams, getByParamsSearch } from '../utils';
+import ImageList from './components/ImageList';
+import AlertBanner from '../components/AlertBanner';
+import SpinnerCircle from '../components/Spinner';
 
 const Homepage = () => {
   const [breeds, setBreeds] = useState([]);
@@ -21,7 +21,7 @@ const Homepage = () => {
 
   useEffect(() => {
     if (breeds.length < 1) {
-      getBreeds().then((res) => {
+      getBreeds().then(res => {
         setBreeds(res);
         setLoading(false);
       });
@@ -31,36 +31,32 @@ const Homepage = () => {
       const i = _findIndex(breeds, function (o) {
         return o.id === breed_ids;
       });
-      getImages(breed_ids).then((res) =>
-        res ? setImages(res) : setError(true)
-      );
+      getImages(breed_ids).then(res => (res ? setImages(res) : setError(true)));
       setSelectedBreed(breeds[i]);
     }
   }, [breeds, location.search]);
 
   const handleLoadMoreBtn = () => {
     setCount(count + 1);
-    getImages(selectedBreed.id, count + 1).then((res) => {
-      setImages(_unionBy([...images], [...res], "id"));
+    getImages(selectedBreed.id, count + 1).then(res => {
+      setImages(_unionBy([...images], [...res], 'id'));
     });
   };
 
   const cleanState = () => {
-    history.push("/");
+    history.push('/');
     setSelectedBreed([]);
     setImages([]);
   };
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setError(false);
     const i = _findIndex(breeds, function (o) {
       return o.id === e.target.value;
     });
     if (i !== -1) {
-      history.push("/" + setUrlSearchParams({ breed_ids: breeds[i].id }));
-      getImages(breeds[i].id, count).then((res) =>
-        res ? setImages(res) : setError(true)
-      );
+      history.push('/' + setUrlSearchParams({ breed_ids: breeds[i].id }));
+      getImages(breeds[i].id, count).then(res => (res ? setImages(res) : setError(true)));
       setSelectedBreed(breeds[i]);
       setCount(1);
     } else {
@@ -77,13 +73,9 @@ const Homepage = () => {
         <Form>
           <Form.Group>
             <Form.Label>Breed</Form.Label>
-            <Form.Control
-              as="select"
-              onChange={handleChange}
-              value={selectedBreed.id}
-            >
+            <Form.Control as="select" onChange={handleChange} value={selectedBreed.id}>
               <option value="-1">Select Breed</option>
-              {breeds.map((breed) => (
+              {breeds.map(breed => (
                 <option key={breed.id} value={breed.id}>
                   {breed.name}
                 </option>
@@ -94,11 +86,7 @@ const Homepage = () => {
       )}
       {error ? <AlertBanner /> : <ImageList images={images} />}
       {images.length > 1 ? (
-        <Button
-          variant="success"
-          onClick={handleLoadMoreBtn}
-          className="mx-auto"
-        >
+        <Button variant="success" onClick={handleLoadMoreBtn} className="mx-auto">
           Load more
         </Button>
       ) : (
