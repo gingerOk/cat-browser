@@ -6,53 +6,10 @@
     height: 80px;
     display: flex;
     justify-content: space-between;
-    .header-animation {
-      min-width: 100px;
-      position: relative;
-      transform: rotate(-45deg) translateY(20px) translateX(-58px) scale(1.5);
-      img {
-        position: absolute;
-        opacity: 0;
-        &:first-child {
-          bottom: -45px;
-          right: 0;
-          animation: walk 6s linear infinite;
-        }
-        &:nth-child(2) {
-          bottom: -20px;
-          right: 40px;
-          animation: walk 6s linear infinite 0.75s;
-        }
-        &:nth-child(3) {
-          bottom: 14px;
-          right: -2px;
-          animation: walk 6s linear infinite 1.25s;
-        }
-        &:nth-child(4) {
-          bottom: 35px;
-          right: 44px;
-          animation: walk 6s linear infinite 1.75s;
-        }
-        &:nth-child(5) {
-          bottom: 64px;
-          right: -5px;
-          animation: walk 6s linear infinite 2.25s;
-        }
-        &:nth-child(6) {
-          bottom: 90px;
-          right: 42px;
-          animation: walk 6s linear infinite 2.75s;
-        }
-      }
+    align-items: center;
+    h1 {
+      font-size: 4.5rem;
+      cursor: pointer;
     }
-  }
-}
-
-@keyframes walk {
-  25% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
