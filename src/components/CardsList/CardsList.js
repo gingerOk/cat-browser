@@ -9,7 +9,7 @@ const CardList = ({ breeds }) => {
         <div style={{ background: "url('/images/bg-2.png')" }} className="list-card" key={index}>
           <h2>{item?.name}</h2>
           <div className="list-card-image-block">
-            <img src={item?.image?.url} className="list-card-image" />
+            <img src={item?.image?.url} className="list-card-image" alt={item?.name} />
           </div>
           <div className="list-card-button" onClick={() => handleNavigate(item.id)}>
             <span>Show more</span>

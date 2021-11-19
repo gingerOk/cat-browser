@@ -16,14 +16,14 @@ const Home = () => {
             onClick={goToDogsPage}
             style={{ background: "url('/images/bg-2.png')" }}
           >
-            <img src="images/main-dog.jpeg" />
+            <img src="images/main-dog.jpeg" alt="Dog" />
           </div>
           <div
             className="card-image"
             onClick={goToCatsPage}
             style={{ background: "url('/images/bg-2.png')" }}
           >
-            <img src="images/main-cat.jpg" />
+            <img src="images/main-cat.jpg" alt="Cat" />
           </div>
         </div>
       </div>
