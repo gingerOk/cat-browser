@@ -1,68 +1,38 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { getCatsBreeds, getCatsImages, loadImage } from '../api';
+import { getCatsBreeds } from '../api';
 import { loadingLock } from './main';
+
 const FETCH_BREEDS = 'FETCH_BREEDS';
-const FETCH_IMAGES = 'FETCH_IMAGES';
-const SET_BREED_ID = 'SET_BREED_ID';
-const FETCH_SELECTED_BREED = 'FETCH_SELECTED_BREED';
-const CLEAR_STATE = 'CLEAR_STATE';
+const CHANGE_PAGE = 'CHANGE_PAGE';
 
 const initialState = {
   catsBreeds: [],
-  selectedBreed: [],
-  breedId: '',
-  images: [],
+  page: 0,
 };
 
 export default createReducer(initialState, {
   [FETCH_BREEDS]: (state, action) => {
-    state.catsBreeds = action.breeds;
+    state.catsBreeds = state.catsBreeds.concat(action.breeds);
   },
-  [FETCH_IMAGES]: (state, action) => {
-    state.images = action.images;
-  },
-  [FETCH_SELECTED_BREED]: (state, action) => {
-    state.selectedBreed = action.selectedBreed;
-  },
-  [SET_BREED_ID]: (state, action) => {
-    state.breedId = action.breedId;
+  [CHANGE_PAGE]: state => {
+    state.page = state.page + 1;
   },
 });
 
-export const setBreedId = breedId => ({
-  type: SET_BREED_ID,
-  breedId: breedId,
+export const changeCatsPage = () => ({
+  type: CHANGE_PAGE,
 });
 
-export const clearState = () => ({
-  type: CLEAR_STATE,
-});
-
-export const loadCatsBreeds = () => dispatch => {
-  dispatch(loadingLock(true));
-  return getCatsBreeds()
-    .then(breeds => {
-      if (breeds) {
-        dispatch({
-          type: FETCH_BREEDS,
-          breeds,
-        });
-        dispatch(loadingLock(false));
-      }
-    })
-    .catch(e => dispatch(loadingLock(false)));
-};
-
-export const loadCatsImages =
-  (breed, page = 0) =>
+export const loadCatsBreeds =
+  (page = 0) =>
   dispatch => {
     dispatch(loadingLock(true));
-    return getCatsImages(breed, page)
-      .then(images => {
-        if (images) {
+    return getCatsBreeds({ page, limit: 6 })
+      .then(breeds => {
+        if (breeds) {
           dispatch({
-            type: FETCH_IMAGES,
-            images,
+            type: FETCH_BREEDS,
+            breeds,
           });
           dispatch(loadingLock(false));
         }
