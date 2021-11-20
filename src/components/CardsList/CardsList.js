@@ -1,17 +1,25 @@
 import React from 'react';
+import { useHistory } from 'react-router';
+import { formatStringToUrl } from '../../utils';
+import { Img } from 'react-image';
 import './CardList.scss';
 
-const CardList = ({ breeds }) => {
-  const handleNavigate = breed => {};
+const CardList = ({ breeds, route }) => {
+  const history = useHistory();
+  const handleNavigate = breed => history.push(route + '/' + formatStringToUrl(breed));
   return (
     <div className="cards-list-wrapper">
       {breeds?.map((item, index) => (
         <div className="list-card" key={index}>
           <h2>{item?.name}</h2>
           <div className="list-card-image-block">
-            <img src={item?.image?.url} className="list-card-image" alt={item?.name} />
+            <Img
+              src={[item?.image?.url, '/images/image.png']}
+              className="list-card-image"
+              alt={item?.name}
+            />
           </div>
-          <div className="list-card-button" onClick={() => handleNavigate(item.id)}>
+          <div className="list-card-button" onClick={() => handleNavigate(item?.name)}>
             <span>Show more</span>
           </div>
         </div>

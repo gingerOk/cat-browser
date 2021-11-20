@@ -5,6 +5,7 @@ import { loadDogsBreeds, changeDogsPage, filterDogsBreeds } from '../../store/do
 import CardList from '../../components/CardsList/CardsList';
 import { useInfiniteScroll, useLazyLoading } from '../../hooks';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import { ROUTE_DOGS_PAGE } from '../../constants/constants';
 
 const Dogs = () => {
   const { dogsBreeds, page, dogsValue, allBreeds } = useSelector(state => state.dogs);
@@ -25,7 +26,11 @@ const Dogs = () => {
     <div className="wrapper-home">
       {loading && <SpinnerCircle />}
       <SearchForm value={dogsValue} changeValue={handleChangeDogsValue} />
-      {dogsBreeds?.length ? <CardList breeds={dogsBreeds} /> : <p>No breeds are available</p>}
+      {dogsBreeds?.length ? (
+        <CardList breeds={dogsBreeds} route={ROUTE_DOGS_PAGE} />
+      ) : (
+        <p>No breeds are available</p>
+      )}
       {!dogsValue && (
         <div
           id="page-bottom-boundary"

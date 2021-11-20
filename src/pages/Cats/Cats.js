@@ -5,6 +5,7 @@ import { loadCatsBreeds, changeCatsPage, filterCatsBreeds } from '../../store/ca
 import { useInfiniteScroll, useLazyLoading } from '../../hooks';
 import CardList from '../../components/CardsList/CardsList';
 import SearchForm from '../../components/SearchForm/SearchForm';
+import { ROUTE_CATS_PAGE } from '../../constants/constants';
 
 const Cats = () => {
   const { catsBreeds, page, catsValue, allBreeds } = useSelector(state => state.cats);
@@ -25,7 +26,11 @@ const Cats = () => {
     <div className="wrapper-home">
       {loading && <SpinnerCircle />}
       <SearchForm value={catsValue} changeValue={handleChangeCatsValue} />
-      {catsBreeds?.length ? <CardList breeds={catsBreeds} /> : <p>No breeds are available</p>}
+      {catsBreeds?.length ? (
+        <CardList breeds={catsBreeds} route={ROUTE_CATS_PAGE} />
+      ) : (
+        <p>No breeds are available</p>
+      )}
       {!catsValue && (
         <div
           id="page-bottom-boundary"
