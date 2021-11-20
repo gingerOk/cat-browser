@@ -11,18 +11,10 @@ const Home = () => {
       <div>
         <h1></h1>
         <div className="wrapper-home-cards">
-          <div
-            className="card-image"
-            onClick={goToDogsPage}
-            style={{ background: "url('/images/bg-2.png')" }}
-          >
+          <div className="card-image" onClick={goToDogsPage}>
             <img src="images/main-dog.jpeg" alt="Dog" />
           </div>
-          <div
-            className="card-image"
-            onClick={goToCatsPage}
-            style={{ background: "url('/images/bg-2.png')" }}
-          >
+          <div className="card-image" onClick={goToCatsPage}>
             <img src="images/main-cat.jpg" alt="Cat" />
           </div>
         </div>
