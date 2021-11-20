@@ -6,7 +6,7 @@ import './CardList.scss';
 
 const CardList = ({ breeds, route }) => {
   const history = useHistory();
-  const handleNavigate = breed => history.push(route + '/' + formatStringToUrl(breed));
+  const handleNavigate = breed => history.push(route + '/' + breed);
   return (
     <div className="cards-list-wrapper">
       {breeds?.map((item, index) => (
@@ -19,7 +19,7 @@ const CardList = ({ breeds, route }) => {
               alt={item?.name}
             />
           </div>
-          <div className="list-card-button" onClick={() => handleNavigate(item?.name)}>
+          <div className="list-card-button" onClick={() => handleNavigate(item?.id)}>
             <span>Show more</span>
           </div>
         </div>

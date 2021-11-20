@@ -13,31 +13,19 @@ export async function getCatsBreeds(params) {
   }
 }
 
-// load cats images by breed
-export async function getCatsImages(breedId, page) {
+// load cats breeds by name
+export async function getCatsBreedsById(id) {
   try {
     let reqParams = {
-      breed_ids: breedId,
+      breed_ids: id,
       limit: 5,
-      page: page,
+      page: 0,
     };
     let response = await axios.get('https://api.thecatapi.com/v1/images/search', {
       params: reqParams,
     });
     return response.data;
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-// load selected image
-export async function loadImage(id) {
-  try {
-    let response = await axios.get('https://api.thecatapi.com/v1/images/' + id);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 // load all dogs breeds
@@ -51,19 +39,17 @@ export async function getDogsBreeds(params) {
   }
 }
 
-// load dogs images by breed
-export async function getDogsImages(breedId, page) {
+// load dogs breeds by name
+export async function getDogsBreedsById(id) {
   try {
     let reqParams = {
-      breed_ids: breedId,
+      breed_ids: id,
       limit: 5,
-      page: page,
+      page: 0,
     };
     let response = await axios.get('https://api.thedogapi.com/v1/images/search', {
       params: reqParams,
     });
     return response.data;
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) {}
 }
