@@ -52,6 +52,8 @@ export const filterCatsBreeds = (value, breeds) => dispatch => {
       breeds: newArr,
     });
     dispatch(loadingLock(false));
+  } else if (!value) {
+    dispatch(loadCatsBreeds(0, false));
   }
 };
 
@@ -68,7 +70,7 @@ export const loadAllCatsBreeds = () => async dispatch => {
     .catch(e => console.error(e));
 };
 export const loadCatsBreeds =
-  (page = 0) =>
+  (page = 0, infinite = true) =>
   async dispatch => {
     dispatch(loadingLock(true));
     if (page === 0) dispatch(loadAllCatsBreeds());
@@ -76,7 +78,7 @@ export const loadCatsBreeds =
       .then(breeds => {
         if (breeds) {
           dispatch({
-            type: CATS_FETCH_BREEDS,
+            type: infinite ? CATS_FETCH_BREEDS : CATS_CHANGE_FETCH_BREEDS,
             breeds,
           });
           dispatch(loadingLock(false));

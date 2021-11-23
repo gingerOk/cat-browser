@@ -1,15 +1,25 @@
+.wrapper-home {
+  h1 {
+    font-size: 6rem;
+    text-align: center;
+    margin: 10vh auto;
+  }
+}
 .wrapper-home-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: calc((100vh - 500px) / 2 - 80px);
   .card-image {
     width: 400px;
     height: 500px;
     padding: 25px;
-    margin: 0 50px;
+    margin: 0 50px 50px;
     cursor: pointer;
     position: relative;
+    @media (max-width: 500px) {
+      margin: 0 16px 50px;
+      width: 100%;
+    }
     &:before {
       content: '';
       position: absolute;

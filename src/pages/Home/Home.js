@@ -7,9 +7,9 @@ const Home = () => {
   const goToDogsPage = () => history.push(ROUTE_DOGS_PAGE);
   const goToCatsPage = () => history.push(ROUTE_CATS_PAGE);
   return (
-    <div className="wrapper-home">
+    <div className="wrapper-home with-padding">
       <div>
-        <h1></h1>
+        <h1>Dogs Vs Cats</h1>
         <div className="wrapper-home-cards">
           <div className="card-image" onClick={goToDogsPage}>
             <img src="images/main-dog.jpeg" alt="Dog" />

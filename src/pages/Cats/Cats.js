@@ -25,7 +25,11 @@ const Cats = () => {
   return (
     <div className="wrapper-home">
       {loading && <SpinnerCircle />}
-      <SearchForm value={catsValue} changeValue={handleChangeCatsValue} />
+      <SearchForm
+        value={catsValue}
+        changeValue={handleChangeCatsValue}
+        placeholder={'Start typing a breed...'}
+      />
       {catsBreeds?.length ? (
         <CardList breeds={catsBreeds} route={ROUTE_CATS_PAGE} />
       ) : (
