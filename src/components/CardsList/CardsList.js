@@ -1,6 +1,5 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { formatStringToUrl } from '../../utils';
 import { Img } from 'react-image';
 import './CardList.scss';
 
