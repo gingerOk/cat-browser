@@ -1,0 +1,15 @@
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  .tag {
+    padding: 6px 16px;
+    font-size: 16px;
+    line-height: 23px;
+    font-weight: 500;
+    color: white;
+    background-color: gray;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 0 8px 8px 0;
+  }
+}
