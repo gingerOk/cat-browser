@@ -5,15 +5,14 @@ const Tags = ({ tags }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-
     if (tags?.length) {
-        const formatedItems = function() {
-            return tags.map(item => {
-              const str = item.replace('_', ' ');
-              return str[0].toUpperCase() + str.slice(1, str.length);
-            });
-          };
-        setItems(formatedItems);
+      const formatedItems = function () {
+        return tags.map(item => {
+          const str = item.replace('_', ' ');
+          return str[0].toUpperCase() + str.slice(1, str.length);
+        });
+      };
+      setItems(formatedItems);
     }
   }, [tags]);
   return (

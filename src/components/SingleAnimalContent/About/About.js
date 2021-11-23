@@ -5,7 +5,6 @@ import './About.scss';
 const About = ({ animal }) => {
   return (
     <section className="wrapper-about">
-
       {animal?.description && (
         <div className="content-row">
           <div className="content-title">Description</div>
@@ -85,7 +84,6 @@ const About = ({ animal }) => {
           </div>
         </div>
       )}
-      
     </section>
   );
 };
